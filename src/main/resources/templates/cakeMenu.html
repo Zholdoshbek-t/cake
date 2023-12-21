@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cake Menu</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            background-color: #404040; /* Set background color */
+            font-family: 'Arial', sans-serif;
+        }
+
+        #top {
+            display: flex;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 23%;
+            background-color: #AEB7BF; /* Set background color for each div */
+            border-radius: 10px; /* Add rounded corners */
+            overflow: hidden; /* Hide overflow content */
+            margin: 10px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        #info {
+            width: 100%;
+            height: 70%;
+        }
+
+        #btn {
+            width: 100%;
+            height: 30%;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        h2 {
+            text-align: center;
+            color: white;
+        }
+
+        img {
+            width: 60%;
+            height: auto;
+            border-bottom: 1px solid #ccc; /* Add a border at the bottom of the image */
+        }
+
+        p {
+            padding: 10px;
+            margin: 0;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div id="top">
+    <div id="menu">
+        <a th:href="@{/cake/menu}">Меню</a>
+    </div>
+    <div id="orders">
+        <a th:href="@{/order/list}">Заказы</a>
+    </div>
+</div>
+<h2>Суши Меню</h2>
+<div th:each="cakeMenu : ${cakeMenuList}">
+    <div id="info">
+        <img th:src="${cakeMenu.imagePath}" alt="Cake Image" width="100" height="100"/>
+        <p th:text="${cakeMenu.name}"></p>
+    </div>
+    <div id="btn">
+        <a th:href="@{'/cake/details/' + ${cakeMenu.id}}">
+            <button>Детали</button>
+        </a>
+    </div>
+</div>
+</body>
+</html>

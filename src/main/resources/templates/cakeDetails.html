@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cake Details</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            background-color: #404040; /* Set background color */
+            /*background-color: #AEB7BF; !* Set background color *!*/
+            font-family: 'Arial', sans-serif;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 30%;
+            background-color: #AEB7BF; /* Set background color for each div */
+            border-radius: 10px; /* Add rounded corners */
+            overflow: hidden; /* Hide overflow content */
+            margin: 10px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        h2 {
+            text-align: center;
+            color: white;
+        }
+
+        img {
+            width: 40%;
+            height: auto;
+            border-bottom: 1px solid #ccc; /* Add a border at the bottom of the image */
+        }
+
+        p {
+            padding: 10px;
+            margin: 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 60%;
+            background-color: #AEB7BF; /* Set background color for the form */
+            border-radius: 10px; /* Add rounded corners */
+            overflow: hidden; /* Hide overflow content */
+            margin: 20px;
+            padding: 20px;
+        }
+
+        label {
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<div id="top">
+    <div id="menu">
+        <a th:href="@{/cake/menu}">Меню</a>
+    </div>
+    <div id="orders">
+        <a th:href="@{/order/list}">Заказы</a>
+    </div>
+</div>
+
+<h2>Детали Торта</h2>
+<!-- Cake details content -->
+<div>
+    <img th:src="${cakeDetail.imagePath}" alt="Cake Image" width="200" height="200"/>
+    <p th:text="${cakeDetail.name}"></p>
+    <p th:text="'Торт ID: ' + ${cakeDetail.id}"></p>
+    <p th:text="'Цена: ' + ${cakeDetail.price}"></p>
+    <p th:text="'Ингредиенты: ' + ${cakeDetail.ingredients}"></p>
+    <p th:text="'Время готовки: ' + ${cakeDetail.cookingTime}"></p>
+</div>
+<!-- Order button and form -->
+<div>
+    <form th:action="@{/cake/order}" method="post" th:object="${makeOrderDto}">
+        <label for="cakeId">Торт ID:</label>
+        <input type="text" th:field="*{cakeId}" required/>
+        <label for="firstName">Имя:</label>
+        <input type="text" th:field="*{firstName}" required/>
+        <br>
+        <label for="lastName">Фамилия:</label>
+        <input type="text" th:field="*{lastName}" required/>
+        <br>
+        <label for="number">Номер телефона:</label>
+        <input type="text" th:field="*{number}" required/>
+        <br>
+        <label for="payingSum">Сумма:</label>
+        <input type="text" th:field="*{payingSum}" required/>
+        <br>
+        <label for="address">Адрес:</label>
+        <input type="text" th:field="*{address}" required/>
+        <br>
+        <label for="comments">Комментарии:</label>
+        <input type="text" th:field="*{comments}" required/>
+        <!-- Add other fields from MakeOrderDto as needed -->
+        <button type="submit">Заказать</button>
+    </form>
+</div>
+</body>
+</html>

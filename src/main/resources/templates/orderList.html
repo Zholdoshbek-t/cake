@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Order List</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            background-color: #404040;
+            font-family: 'Arial', sans-serif;
+        }
+
+        #top {
+            display: flex;
+            margin: auto;
+            background-color: #AEB7BF;
+            flex-direction: row;
+            color: white;
+            border-radius: 10px; /* Add rounded corners */
+            overflow: hidden; /* Hide overflow content */
+            transition: transform 0.2s ease-in-out;
+        }
+
+        #top div {
+            margin: 10px;
+        }
+
+        .father {
+            display: flex;
+        }
+
+        .son {
+            width: 50%;
+            background-color: #AEB7BF; /* Set background color for each div */
+            border-radius: 10px; /* Add rounded corners */
+            overflow: hidden; /* Hide overflow content */
+            margin: 10px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .daughter {
+            width: 50%;
+            background-color: #AEB7BF; /* Set background color for each div */
+            border-radius: 10px; /* Add rounded corners */
+            overflow: hidden; /* Hide overflow content */
+            margin: 10px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .details {
+            margin: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<div id="top">
+    <div id="menu">
+        <a th:href="@{/cake/menu}">Меню</a>
+    </div>
+    <div id="orders">
+        <a th:href="@{/order/list}">Заказы</a>
+    </div>
+</div>
+
+<div class="father">
+    <div class="son">
+        <div class="details">
+            <h2>Заказы</h2>
+            <!-- Display orders -->
+            <div th:each="orderDto : ${ordersDto.orders}">
+                <div>
+                    <p th:text="${orderDto.cakeName}"></p>
+                    <p th:text="'Имя: ' + ${orderDto.firstName} + ' ' + ${orderDto.lastName}"></p>
+                    <p th:text="'Номер телефона: ' + ${orderDto.number}"></p>
+                    <p th:text="'Дата: ' + ${orderDto.date}"></p>
+                    <p th:text="'Адрес: ' + ${orderDto.address}"></p>
+                    <p th:text="'Комментарии: ' + ${orderDto.comments}"></p>
+                    <p th:text="'Цена: ' + ${orderDto.price}"></p>
+                    <p th:text="'Сумма: ' + ${orderDto.payingSum}"></p>
+
+                    <!-- Form for delivering orders -->
+                    <form th:if="${!orderDto.delivered}" th:action="@{'/order/deliver/' + ${orderDto.id}}"
+                          method="post">
+                        <button type="submit">Доставить</button>
+                    </form>
+                    <form th:if="${!orderDto.delivered}" th:action="@{'/order/delete/' + ${orderDto.id}}" method="post">
+                        <button type="submit">Удалить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="daughter">
+        <div class="details">
+            <h2>Доставлено</h2>
+            <!-- Display delivered orders -->
+            <div th:each="orderDto : ${ordersDto.deliveredOrders}">
+                <div>
+                    <p th:text="${orderDto.cakeName}"></p>
+                    <p th:text="'Имя: ' + ${orderDto.firstName} + ' ' + ${orderDto.lastName}"></p>
+                    <p th:text="'Фамилия: ' + ${orderDto.lastName}"></p>
+                    <p th:text="'Номер телефона: ' + ${orderDto.number}"></p>
+                    <p th:text="'Дата: ' + ${orderDto.date}"></p>
+                    <p th:text="'Адрес: ' + ${orderDto.address}"></p>
+                    <p th:text="'Комментарии: ' + ${orderDto.comments}"></p>
+                    <p th:text="'Цена: ' + ${orderDto.price}"></p>
+                    <p th:text="'Сумма: ' + ${orderDto.payingSum}"></p>
+
+                    <form th:if="${orderDto.delivered}" th:action="@{'/order/cancel/' + ${orderDto.id}}" method="post">
+                        <button type="submit">Отменить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

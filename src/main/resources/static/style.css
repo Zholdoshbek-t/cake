@@ -1,0 +1,220 @@
+html {
+    box-sizing: border-box;
+    font-size: 12px;
+    color: white;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#div-body {
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 70%;
+    background-color: #2F343A;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 1%;
+    background-color: #C8A35F;
+}
+
+#top-part {
+    display: flex;
+    align-self: center;
+    width: 100%;
+    height: 100%;
+    background-color: #C8A35F;
+}
+
+#lang, #number, #mail {
+    flex-grow: 1;
+    flex-basis: 33%;
+    align-self: center;
+}
+
+#lang {
+    text-align: left;
+    margin-left: 5px;
+}
+
+#number {
+    text-align: center;
+}
+
+#mail {
+    text-align: right;
+    margin-right: 5px;
+}
+
+nav {
+    display: flex;
+    width: 100%;
+    height: 2%;
+}
+
+#offices, #menu {
+    align-self: center;
+}
+
+#offices {
+    flex-basis: 45%;
+    text-align: left;
+    margin-left: 5px;
+}
+
+#menu {
+    flex-basis: 55%;
+    display: flex;
+    margin-right: 5px;
+}
+
+#menu div {
+    flex-basis: 25%;
+    text-align: center;
+}
+
+#title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+#title-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 50%;
+    height: 45%;
+    border: solid 2px #C8A35F;
+}
+
+#title-text h1 {
+    font-size: 2.0rem;
+}
+
+#title-text p {
+    font-size: 1.5rem;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: 13%;
+    margin-bottom: 30px;
+}
+
+#services {
+    width: 100%;
+    height: 80%;
+}
+
+#services img {
+    height: 150px;
+    width: 150px;
+}
+
+#services-title {
+    width: 50%;
+    height: auto;
+}
+
+#services-title p {
+    font-size: 1.8rem;
+}
+
+#services-top {
+    display: flex;
+    flex-basis: 100%;
+    height: 50%;
+}
+
+#services-top div {
+    flex-basis: 25%;
+    height: 100%;
+    text-align: center;
+    background-color: #506266;
+    border: solid 2px #2F343A;
+}
+
+#services-bottom {
+    display: flex;
+    flex-basis: 100%;
+    height: 50%;
+    background-color: red;
+}
+
+#services-bottom div {
+    flex-basis: 25%;
+    height: 100%;
+    text-align: center;
+    background-color: #506266;
+    border: solid 2px #2F343A;
+}
+
+#service-1:hover {
+    color: black;
+    background-color: #C8A35F;
+}
+
+#service-2:hover {
+    color: black;
+    background-color: #C8A35F;
+}
+
+#service-3:hover {
+    color: black;
+    background-color: #C8A35F;
+}
+
+#service-4:hover {
+    color: black;
+    background-color: #C8A35F;
+}
+
+#service-5:hover {
+    color: black;
+    background-color: #C8A35F;
+}
+
+#service-6:hover {
+    color: black;
+    background-color: #C8A35F;
+}
+
+#service-7:hover {
+    color: black;
+    background-color: #C8A35F;
+}
+
+#service-8:hover {
+    color: black;
+    background-color: #C8A35F;
+}
